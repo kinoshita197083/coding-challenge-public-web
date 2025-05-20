@@ -1,10 +1,26 @@
-# Next.js + Tailwind CSS + Contentful Starter
+# Zeller Web coding challenge
 
-This is a starter project for a coding test. The app is built using:
+This is a starter project for a Blog app. The app is built using:
 
 - [Next.js](https://nextjs.org)
 - [Tailwind CSS](https://tailwindcss.com)
 - [Contentful CMS](https://www.contentful.com)
+
+## High Level Requirements
+
+1. Create blog list page where the blog summaries are listed. Ex: Zeller blog page - https://www.myzeller.com/au/blog
+2. Once you click on a blog summary it should be navigated to a blog view page - Ex: https://www.myzeller.com/au/blog/awaken
+
+Styles do not need to match the examples above. Feel free to add styles as you see fit.
+
+## Zeller checklist
+
+1. Proper test coverage
+2. Best practises for performance optimisation
+3. Code quality
+4. Quality and Responsive UI
+5. Documentation describing the approach and setup guidelines.
+
 
 ## Getting Started
 
