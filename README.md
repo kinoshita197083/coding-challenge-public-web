@@ -35,3 +35,6 @@ npm run dev
 
 - Replace `yourContentTypeId` in `pages/index.js` with your actual Contentful content type ID.
 - Make sure the content type has fields like `title` and `description` as used in the UI.
+
+Sample UI you should see by running the app
+![Screenshot 2025-05-20 at 10 20 29 am](https://github.com/user-attachments/assets/4487b877-870e-45f3-a0b1-4b5031f21295)
