@@ -1,5 +1,5 @@
-import Layout from "./layout";
-import App from "./App";
+import Layout from "../components/layout/layout";
+import App from "../components/layout/App";
 import { CONTENTFUL_CONTENT_TYPE } from "../lib/utils";
 
 export default function Home({ entries }) {
