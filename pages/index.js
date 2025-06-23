@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { CONTENTFUL_CONTENT_TYPE } from "../lib/utils";
 
 export default function Home({ entries }) {
   return (
@@ -11,7 +12,7 @@ export default function Home({ entries }) {
         {entries.map((entry) => (
           <li key={entry.sys.id} className="bg-white shadow p-4 rounded">
             <h2 className="text-xl font-semibold">{entry.fields.title}</h2>
-            <p>{entry.fields.description}</p>
+            <p>{entry.fields.slug}</p>
           </li>
         ))}
       </ul>
@@ -26,7 +27,7 @@ export async function getStaticProps() {
     accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
   });
 
-  const res = await client.getEntries({ content_type: "yourContentTypeId" });
+  const res = await client.getEntries({ content_type: CONTENTFUL_CONTENT_TYPE });
 
   return {
     props: {
