@@ -1,6 +1,6 @@
 import Layout from "../components/layout/layout";
 import App from "../components/layout/App";
-import { CONTENTFUL_CONTENT_TYPE } from "../lib/utils";
+import { CONTENTFUL_CONTENT_TYPE, contentfulClient } from "../lib/utils";
 
 export default function Home({ entries }) {
   return (
@@ -11,13 +11,8 @@ export default function Home({ entries }) {
 }
 
 export async function getStaticProps() {
-  const contentful = require("contentful");
-  const client = contentful.createClient({
-    space: process.env.CONTENTFUL_SPACE_ID,
-    accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
-  });
+  const res = await contentfulClient.getEntries({ content_type: CONTENTFUL_CONTENT_TYPE });
 
-  const res = await client.getEntries({ content_type: CONTENTFUL_CONTENT_TYPE });
 
   return {
     props: {

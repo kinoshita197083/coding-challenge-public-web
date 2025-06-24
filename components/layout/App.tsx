@@ -7,7 +7,7 @@ const App: React.FC<ContentfulEntries> = ({ entries }) => (
         <h1 className="text-2xl font-bold mb-4">Zeller Business Blog</h1>
         <ul className="space-y-2">
             {entries.map((entry: Entries) => {
-                console.log(JSON.stringify(entry));
+                // console.log(JSON.stringify(entry));
                 const blogPost = {
                     id: entry.sys.id,
                     title: entry.fields.title,
