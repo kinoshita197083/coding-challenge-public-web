@@ -1,12 +1,16 @@
 import Head from "next/head";
+import Navbar from "../Navbar/Navbar";
 
 export default function Layout({ children }) {
     return (
-        <div className="min-h-screen bg-gray-50 p-8">
-            <Head>
-                <title>Next.js + Contentful Starter</title>
-            </Head>
-            {children}
+        <div className="">
+            <Navbar />
+            <div className="min-h-screen p-8 mt-[5.5rem]">
+                <Head>
+                    <title>Zeller Business Blog</title>
+                </Head>
+                {children}
+            </div>
         </div>
     );
 }
