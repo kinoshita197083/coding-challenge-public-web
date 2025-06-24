@@ -1,4 +1,4 @@
-import { CONTENTFUL_CONTENT_TYPE, contentfulClient } from '../../lib/utils'; // adjust path as needed
+import { CONTENTFUL_CONTENT_TYPE, getContentfulClient } from '../../lib/utils'; // adjust path as needed
 
 export default function BlogPost({ post }) {
     console.log('[slug] post', post);
@@ -13,6 +13,7 @@ export default function BlogPost({ post }) {
 // Tell Next.js which dynamic routes to pre-render
 export const getStaticPaths = async () => {
     // Fetch all blog posts from Contentful
+    const contentfulClient = getContentfulClient();
     const entries = await contentfulClient.getEntries({
         content_type: CONTENTFUL_CONTENT_TYPE,
     });
@@ -32,6 +33,7 @@ export const getStaticPaths = async () => {
 // Fetch data for each path
 export const getStaticProps = async ({ params }) => {
     // Fetch the blog post for the given slug
+    const contentfulClient = getContentfulClient();
     const entries = await contentfulClient.getEntries({
         content_type: CONTENTFUL_CONTENT_TYPE,
         'fields.slug': params.slug,

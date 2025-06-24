@@ -12,9 +12,8 @@ export type Entries = {
         slug: string;
         content: string;
         author: string;
-        date: string;
+        publishedDate: string;
         tags: string[];
-        image: string;
-        isFeatured: boolean;
+        featuredImage: any;
     }
 }
