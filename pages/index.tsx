@@ -1,12 +1,13 @@
-import Layout from "../components/layout/layout";
 import BlogList from "../components/blogs/BlogList";
 import { CONTENTFUL_CONTENT_TYPE, getContentfulClient } from "../lib/utils";
+import CallToActionCard from "@/components/callToAction/CallToActionCard";
 
 export default function Home({ entries }) {
   return (
-    <Layout>
+    <div className="space-y-16">
       <BlogList entries={entries} />
-    </Layout>
+      <CallToActionCard />
+    </div>
   );
 }
 

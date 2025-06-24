@@ -18,7 +18,7 @@ export const getStaticPaths = async () => {
         content_type: CONTENTFUL_CONTENT_TYPE,
     });
 
-    console.log('[slug] entries', entries);
+    // console.log('[slug] entries', entries);
 
     const paths = entries.items.map((item) => ({
         params: { slug: item.fields.slug },

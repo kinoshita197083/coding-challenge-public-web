@@ -19,7 +19,7 @@ type BlogItemProps = {
 };
 
 export default function BlogItem({ blogPost }: BlogItemProps) {
-    console.log('------> blogPost:', blogPost);
+    // console.log('------> blogPost:', blogPost);
     // Support both Contentful asset and string URL for image
     const imageUrl = typeof blogPost.image === 'string'
         ? blogPost.image
