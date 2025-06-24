@@ -1,16 +1,45 @@
-import { CONTENTFUL_CONTENT_TYPE, getContentfulClient } from '../../lib/utils'; // adjust path as needed
+import BlogPageCard from '@/components/blogs/BlogPageCard';
+import { CONTENTFUL_CONTENT_TYPE, getContentfulClient } from '../../lib/utils';
+import CustomBreadcrumb from '@/components/blogs/CustomBreadcrumb';
+import ContentfulRichText from '@/components/blogs/ContentfulRichText';
 
 export default function BlogPost({ post }) {
-    console.log('[slug] post', post);
+    // console.log('[slug] post', post.fields.content);
+
+    const excerpt = post.fields.excerpt;
+
+    const content = post.fields.content;
+    content.content.forEach(item => {
+        console.log('[slug] item', item);
+    });
+
+    const publishedDate = new Date(post.fields.publishedDate).toLocaleDateString("en-AU", {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+    });
+
     return (
-        <div>
-            <h1>{post.fields.title}</h1>
-            {/* <p>{post.content}</p> */}
+        <div className="space-y-16">
+            <CustomBreadcrumb postTitle={post.fields.title} />
+            <BlogPageCard
+                imageUrl={post.fields.featuredImage.fields.file.url}
+                title={post.fields.title}
+                author={post.fields.author}
+                publishedDate={publishedDate}
+            />
+
+            <div className="max-w-3xl mx-auto px-4">
+                <ContentfulRichText content={excerpt.content} />
+            </div>
+
+            <div className="max-w-3xl mx-auto px-4">
+                <ContentfulRichText content={content.content} />
+            </div>
         </div>
     )
 }
 
-// Tell Next.js which dynamic routes to pre-render
 export const getStaticPaths = async () => {
     // Fetch all blog posts from Contentful
     const contentfulClient = getContentfulClient();
@@ -40,7 +69,7 @@ export const getStaticProps = async ({ params }) => {
         limit: 1,
     });
 
-    console.log('[slug] entries', entries);
+    // console.log('[slug] entries', entries);
 
     const post = entries.items[0] || null;
 
@@ -48,6 +77,6 @@ export const getStaticProps = async ({ params }) => {
         props: {
             post,
         },
-        // revalidate: 60 // Optional: ISR (Incremental Static Regeneration)
+        // revalidate: 60  // ISR (Incremental Static Regeneration)
     }
 }

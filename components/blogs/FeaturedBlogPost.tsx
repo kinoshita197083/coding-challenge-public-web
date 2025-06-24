@@ -49,7 +49,7 @@ const FeaturedBlogPost = ({ featuredEntry }: { featuredEntry: any }) => {
                             <div className="flex text-sm text-slate-500">
                                 <span>{new Date(featuredEntry.fields.publishedDate).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</span>
                                 <span className="mx-2">•</span>
-                                <span>8 min read</span>
+                                <span>{featuredEntry.fields.readTime} min read</span>
                             </div>
                         </div>
                     </div>
