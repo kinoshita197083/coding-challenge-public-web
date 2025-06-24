@@ -1,20 +1,15 @@
-import React, { FC, useEffect, useState } from "react";
+import React from "react";
 import Link from "next/link";
 import { ZellerLogo } from "../Logo";
 
-export interface NavbarProps { }
-
-const NAVBAR_HEIGHT = 72;
-
-const Navbar: FC<NavbarProps> = () => {
+const Navbar = () => {
 
     return (
         <nav
-            className="fixed top-4 left-1/2 transform -translate-x-1/2 w-[95vw] max-w-6xl z-50 bg-white/80 backdrop-blur-md rounded-2xl shadow-sm flex items-center justify-between px-8 py-5 border border-gray-200 transition-all duration-100"
-            style={{ height: NAVBAR_HEIGHT }}
+            className="fixed top-4 left-1/2 max-w-6xl transform -translate-x-1/2 w-[95vw] z-50 bg-white/80 backdrop-blur-md rounded-2xl shadow-sm flex items-center justify-between px-8 py-2 sm:py-5 border border-gray-200 transition-all duration-100"
         >
             <div className="flex items-center flex-shrink-0 ml-4">
-                <Link href="/" legacyBehavior>
+                <Link href="/">
                     <ZellerLogo />
                 </Link>
             </div>
