@@ -1,16 +1,18 @@
-import Layout from "../components/layout/layout";
 import BlogList from "../components/blogs/BlogList";
-import { CONTENTFUL_CONTENT_TYPE, contentfulClient } from "../lib/utils";
+import { CONTENTFUL_CONTENT_TYPE, getContentfulClient } from "../lib/utils";
+import CallToActionCard from "@/components/callToAction/CallToActionCard";
 
 export default function Home({ entries }) {
   return (
-    <Layout>
+    <div className="space-y-16">
       <BlogList entries={entries} />
-    </Layout>
+      <CallToActionCard />
+    </div>
   );
 }
 
 export async function getStaticProps() {
+  const contentfulClient = getContentfulClient();
   const res = await contentfulClient.getEntries({ content_type: CONTENTFUL_CONTENT_TYPE });
 
   return {
