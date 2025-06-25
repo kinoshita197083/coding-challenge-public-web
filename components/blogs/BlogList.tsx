@@ -1,8 +1,8 @@
 import React from "react";
-import BlogItem from "./BlogItem";
 import { Card } from "../ui/card";
 import FeaturedBlogPost from "./FeaturedBlogPost";
 import { BlogPost } from "@/types/blogs/blog";
+import BlogItem from "./Blog";
 
 type BlogListProps = {
     blogs: BlogPost[];
