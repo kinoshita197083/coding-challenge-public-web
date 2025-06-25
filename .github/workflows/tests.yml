@@ -1,0 +1,29 @@
+name: Run Tests
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+        cache: 'npm'
+        cache-dependency-path: coding-challenge-public-web/package-lock.json
+
+    - name: Install dependencies
+      working-directory: ./coding-challenge-public-web
+      run: npm ci
+
+    - name: Run tests
+      working-directory: ./coding-challenge-public-web
+      run: npm test 

@@ -29,11 +29,11 @@ export default function BlogPost({ post }) {
                 publishedDate={publishedDate}
             />
 
-            <div className="max-w-3xl mx-auto px-4">
+            <div className="max-w-3xl mx-auto">
                 <ContentfulRichText content={excerpt.content} />
             </div>
 
-            <div className="max-w-3xl mx-auto px-4">
+            <div className="max-w-3xl mx-auto">
                 <ContentfulRichText content={content.content} />
             </div>
         </div>

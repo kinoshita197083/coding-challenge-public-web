@@ -12,7 +12,7 @@ export default function Layout({ children }) {
                 <link rel="icon" href="/zeller-icon.png" />
             </Head>
             <Navbar />
-            <main className="min-h-screen p-8 mt-[5.5rem] max-w-6xl mx-auto">
+            <main className="min-h-screen p-4 md:p-8 mt-[5.5rem] max-w-6xl mx-auto">
                 {children}
             </main>
         </>
