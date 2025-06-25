@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import React from 'react'
 
 type BlogPageCardProps = {
@@ -9,26 +10,32 @@ type BlogPageCardProps = {
 
 const BlogPageCard = ({ imageUrl, title, author, publishedDate }: BlogPageCardProps) => {
     return (
-        <div className="grid grid-cols-1 md:grid-cols-2 rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
+        <article className="grid grid-cols-1 md:grid-cols-2 rounded-2xl shadow-sm border border-slate-100 overflow-hidden" aria-labelledby="blog-title">
             <div className="col-span-1">
-                <img
+                <Image
                     src={imageUrl}
-                    alt={title}
+                    width={600}
+                    height={600}
+                    alt={`Featured image for article: ${title}`}
                     className="w-full h-[300px] md:h-[360px] object-cover transition-transform hover:scale-105 duration-300"
                 />
             </div>
             <div className="col-span-1 p-12 flex flex-col space-y-6 bg-zinc-900 text-white/90">
-                <h1 className="text-4xl font-bold">{title}</h1>
+                <h1 id="blog-title" className="text-4xl font-bold">{title}</h1>
                 <div className="flex gap-4">
-                    <p className="text-sm text-zinc-300">
+                    <p className="text-sm text-zinc-300" aria-label="Author">
                         By {author}
                     </p>
-                    <p className="text-sm text-zinc-300">
+                    <time
+                        dateTime={new Date(publishedDate).toISOString()}
+                        className="text-sm text-zinc-300"
+                        aria-label="Publication date"
+                    >
                         {publishedDate}
-                    </p>
+                    </time>
                 </div>
             </div>
-        </div>
+        </article>
     )
 }
 

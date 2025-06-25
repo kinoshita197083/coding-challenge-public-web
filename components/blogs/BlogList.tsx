@@ -15,13 +15,16 @@ const BlogList: React.FC<BlogListProps> = ({ blogs }) => {
     const regularBlogs = blogs.length > 0 ? blogs.slice(1) : [];
 
     return (
-        <section className="max-w-6xl mx-auto">
+        <section className="max-w-6xl mx-auto" aria-labelledby="blog-heading">
             {featuredBlog && (
                 <FeaturedBlogPost featuredEntry={featuredBlog} />
             )}
 
-            <h2 className="text-3xl font-bold mb-8">Latest Articles</h2>
-            <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <h2 id="blog-heading" className="text-3xl font-bold mb-8">Latest Articles</h2>
+            <ul
+                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
+                aria-label="Blog articles list"
+            >
                 {regularBlogs.map((blog: BlogPost) => {
                     return (
                         <li key={blog.sys.id} className="h-full">

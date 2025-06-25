@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import React from 'react';
 
 interface ContentNode {
@@ -69,9 +70,11 @@ const ContentfulRichText: React.FC<ContentfulRichTextProps> = ({ content }) => {
             case 'embedded-asset-block':
                 return (
                     <div className="my-4">
-                        <img
-                            src={node.data.target.fields.file.url}
+                        <Image
+                            src={`https:${node.data.target.fields.file.url}`}
                             alt={node.data.target.fields.title}
+                            width={600}
+                            height={600}
                             className="w-full h-auto rounded-lg shadow-md"
                         />
                     </div>
