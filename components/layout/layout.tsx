@@ -10,7 +10,7 @@ export default function Layout({ children }) {
                     <title>Zeller Business Blog</title>
                     <meta name="description" content="Zeller Business Blog" />
                     <meta name="viewport" content="width=device-width, initial-scale=1" />
-                    {/* <link rel="icon" href="/favicon/apple-touch-icon.png" /> */}
+                    <link rel="icon" href="/zeller-icon.png" />
                 </Head>
                 {children}
             </div>
