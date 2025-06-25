@@ -5,15 +5,18 @@ import Link from "next/link";
 import { CardHeader, CardContent, CardFooter, CardTitle, CardDescription } from "../ui/card";
 import { Button } from "../ui/button";
 import { BlogPost } from "@/types/blogs/blog";
+import Image from "next/image";
 
 export default function BlogItem({ blogPost }: { blogPost: BlogPost }) {
     // Destructure the blog post fields
-    const imageUrl = blogPost.fields?.featuredImage?.fields?.file?.url;
+    const imageUrl = `https:${blogPost.fields?.featuredImage?.fields?.file?.url}`;
     const publishedDate = blogPost.fields?.publishedDate;
     const author = blogPost.fields?.author;
     const tags = blogPost.fields?.tags;
     const title = blogPost.fields?.title;
     const slug = blogPost.fields?.slug;
+
+    console.log('[BlogItem] imageUrl', blogPost.fields?.featuredImage);
 
     // Format the published date
     const postDate = new Date(publishedDate).toLocaleDateString("en-AU", {
@@ -31,8 +34,10 @@ export default function BlogItem({ blogPost }: { blogPost: BlogPost }) {
             >
                 <CardHeader className="p-0 overflow-hidden rounded-t-xl">
                     {imageUrl && (
-                        <img
+                        <Image
                             src={imageUrl}
+                            width={300}
+                            height={300}
                             alt={`Featured image for article: ${title}`}
                             className="w-full h-48 object-cover md:h-56 lg:h-64 transition-transform duration-300 group-hover:scale-105"
                         />

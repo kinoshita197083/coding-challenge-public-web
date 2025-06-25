@@ -1,14 +1,26 @@
 import React from 'react'
 import { Button } from '../ui/button'
+import Image from 'next/image'
 
 const FeaturedBlogPost = ({ featuredEntry }: { featuredEntry: any }) => {
+    const imageUrl = `https:${featuredEntry.fields.featuredImage.fields.file.url}`;
+    const title = featuredEntry.fields.title;
+    const author = featuredEntry.fields.author;
+    const publishedDate = new Date(featuredEntry.fields.publishedDate).toLocaleDateString("en-AU", {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+    });
+
     return (
         <div className="mb-16">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 overflow-hidden rounded-xl shadow-sm border border-slate-100">
                 <div className="relative h-64 lg:h-auto bg-slate-50 overflow-hidden">
-                    <img
-                        src={featuredEntry.fields.featuredImage.fields.file.url}
-                        alt={featuredEntry.fields.title}
+                    <Image
+                        src={imageUrl}
+                        alt={title}
+                        width={800}
+                        height={800}
                         className="w-full h-full object-cover transition-transform hover:scale-105 duration-300"
                     />
 
@@ -17,7 +29,7 @@ const FeaturedBlogPost = ({ featuredEntry }: { featuredEntry: any }) => {
                 <div className="flex flex-col justify-center p-6 lg:p-8">
                     <div className="flex items-center space-x-3 mb-4">
                         <div className="flex items-center">
-                            <div className="w-2 h-2 rounded-full bg-blue-500 mr-2"></div>
+                            <div className="w-2 h-2 rounded-full bg-blue-500 mr-2" aria-hidden="true"></div>
                             <span className="font-semibold text-blue-600 text-sm tracking-wide">FEATURED</span>
                         </div>
 
@@ -29,7 +41,7 @@ const FeaturedBlogPost = ({ featuredEntry }: { featuredEntry: any }) => {
                     </div>
 
                     <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 leading-tight">
-                        {featuredEntry.fields.title}
+                        {title}
                     </h2>
 
                     <p className="text-base text-slate-600 mb-6">
@@ -45,9 +57,9 @@ const FeaturedBlogPost = ({ featuredEntry }: { featuredEntry: any }) => {
                             </svg>
                         </div>
                         <div>
-                            <p className="font-semibold text-slate-900">{featuredEntry.fields.author}</p>
+                            <p className="font-semibold text-slate-900">{author}</p>
                             <div className="flex text-sm text-slate-500">
-                                <span>{new Date(featuredEntry.fields.publishedDate).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</span>
+                                <span>{publishedDate}</span>
                                 <span className="mx-2">•</span>
                                 <span>{featuredEntry.fields.readTime} min read</span>
                             </div>

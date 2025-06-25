@@ -1,6 +1,7 @@
 import React from 'react'
 import { Button } from '../ui/button'
 import { SubscribeCallToActionProps } from '@/types/contentful/content';
+import Image from 'next/image';
 
 const CallToActionCard = (props: SubscribeCallToActionProps) => {
     const { heading, subHeadings, buttons, featuredImage } = props;
@@ -36,9 +37,11 @@ const CallToActionCard = (props: SubscribeCallToActionProps) => {
             {/* Featured Image */}
             <div>
                 <div className="h-full">
-                    <img
+                    <Image
                         src={featuredImage.src}
                         alt={featuredImage.alt || "Call to action featured image"}
+                        width={600}
+                        height={600}
                         className="w-full h-full object-cover transition-transform hover:scale-105 duration-300"
                     />
                 </div>

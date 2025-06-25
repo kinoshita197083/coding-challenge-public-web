@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import React from 'react'
 
 type BlogPageCardProps = {
@@ -11,8 +12,10 @@ const BlogPageCard = ({ imageUrl, title, author, publishedDate }: BlogPageCardPr
     return (
         <article className="grid grid-cols-1 md:grid-cols-2 rounded-2xl shadow-sm border border-slate-100 overflow-hidden" aria-labelledby="blog-title">
             <div className="col-span-1">
-                <img
+                <Image
                     src={imageUrl}
+                    width={600}
+                    height={600}
                     alt={`Featured image for article: ${title}`}
                     className="w-full h-[300px] md:h-[360px] object-cover transition-transform hover:scale-105 duration-300"
                 />

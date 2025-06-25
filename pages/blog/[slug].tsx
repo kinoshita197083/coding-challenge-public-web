@@ -6,26 +6,28 @@ import ContentfulRichText from '@/components/blogs/ContentfulRichText';
 export default function BlogPost({ post }) {
     // console.log('[slug] post', post.fields.content);
 
+    const imageUrl = `https:${post.fields.featuredImage.fields.file.url}`;
     const excerpt = post.fields.excerpt;
-
-    const content = post.fields.content;
-    content.content.forEach(item => {
-        console.log('[slug] item', item);
-    });
-
+    const title = post.fields.title;
+    const author = post.fields.author;
     const publishedDate = new Date(post.fields.publishedDate).toLocaleDateString("en-AU", {
         year: 'numeric',
         month: 'long',
         day: 'numeric'
     });
 
+    const content = post.fields.content;
+    content.content.forEach(item => {
+        console.log('[slug] item', item);
+    });
+
     return (
         <div className="space-y-16">
             <CustomBreadcrumb postTitle={post.fields.title} />
             <BlogPageCard
-                imageUrl={post.fields.featuredImage.fields.file.url}
-                title={post.fields.title}
-                author={post.fields.author}
+                imageUrl={imageUrl}
+                title={title}
+                author={author}
                 publishedDate={publishedDate}
             />
 
