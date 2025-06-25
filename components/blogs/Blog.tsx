@@ -9,7 +9,8 @@ import Image from "next/image";
 
 export default function BlogItem({ blogPost }: { blogPost: BlogPost }) {
     // Destructure the blog post fields
-    const imageUrl = `https:${blogPost.fields?.featuredImage?.fields?.file?.url}`;
+    const featuredImage = blogPost.fields?.featuredImage;
+    const imageUrl = featuredImage ? `https:${featuredImage.fields?.file?.url}` : null;
     const publishedDate = blogPost.fields?.publishedDate;
     const author = blogPost.fields?.author;
     const tags = blogPost.fields?.tags;
@@ -32,8 +33,8 @@ export default function BlogItem({ blogPost }: { blogPost: BlogPost }) {
                 className="flex flex-col h-full group"
                 aria-labelledby={`blog-title-${slug}`}
             >
-                <CardHeader className="p-0 overflow-hidden rounded-t-xl">
-                    {imageUrl && (
+                {imageUrl && (
+                    <CardHeader className="p-0 overflow-hidden rounded-t-xl">
                         <Image
                             src={imageUrl}
                             width={300}
@@ -41,8 +42,8 @@ export default function BlogItem({ blogPost }: { blogPost: BlogPost }) {
                             alt={`Featured image for article: ${title}`}
                             className="w-full h-48 object-cover md:h-56 lg:h-64 transition-transform duration-300 group-hover:scale-105"
                         />
-                    )}
-                </CardHeader>
+                    </CardHeader>
+                )}
                 <CardContent className="flex flex-col flex-1 p-4">
                     <CardTitle id={`blog-title-${slug}`} className="text-lg md:text-xl font-semibold mb-2 line-clamp-2">
                         {title}

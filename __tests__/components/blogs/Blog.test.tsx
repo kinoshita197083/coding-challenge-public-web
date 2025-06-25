@@ -15,6 +15,15 @@ jest.mock('next/link', () => {
     };
 });
 
+// Mock Next.js Image component
+jest.mock('next/image', () => ({
+    __esModule: true,
+    default: (props: any) => {
+        // eslint-disable-next-line jsx-a11y/alt-text
+        return <img {...props} />;
+    },
+}));
+
 describe('BlogItem', () => {
     // Mock blog post data
     const mockBlogPost: BlogPost = {
@@ -36,7 +45,7 @@ describe('BlogItem', () => {
                 fields: {
                     title: 'Test Image',
                     file: {
-                        url: 'https://example.com/test-image.jpg',
+                        url: '//example.com/test-image.jpg',
                         details: {
                             size: 12345,
                             image: {
@@ -82,7 +91,7 @@ describe('BlogItem', () => {
         expect(link).toHaveAttribute('href', '/blog/test-blog-slug');
 
         // Check if the image is rendered with the correct src
-        const image = screen.getByAltText('Test Blog Title');
+        const image = screen.getByAltText('Featured image for article: Test Blog Title');
         expect(image).toHaveAttribute('src', 'https://example.com/test-image.jpg');
     });
 
@@ -98,7 +107,7 @@ describe('BlogItem', () => {
         render(<BlogItem blogPost={blogPostWithoutImage} />);
 
         // Verify the image is not rendered
-        expect(screen.queryByRole('img')).not.toBeInTheDocument();
+        expect(screen.queryByAltText(/Featured image for article/)).not.toBeInTheDocument();
     });
 
     test('renders without tags when tags are not provided', () => {
