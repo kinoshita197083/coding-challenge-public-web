@@ -25,22 +25,24 @@ const LandingSection = (props: LandingSectionProps) => {
     const badgeShadow = getBadgeShadow(badge?.styling?.shadow);
 
     return (
-        <section className={sectionClasses}>
+        <section className={sectionClasses} aria-labelledby="landing-heading">
             <div className={containerClasses}>
                 <div className={contentClasses}>
                     {badge && (
                         <>
-                            <div className={`p-2 bg-white/20 rounded-full px-4 mb-6 backdrop-blur-sm ${badgeShadow}`}>
+                            <div className={`p-2 bg-white/20 rounded-full px-4 mb-6 backdrop-blur-sm ${badgeShadow}`}
+                                aria-hidden="true">
                                 <ZellerLogo size="small" />
                             </div>
 
-                            <div className="w-16 h-1 bg-gradient-to-r from-black to-slate-500 rounded-full mb-6"></div>
+                            <div className="w-16 h-1 bg-gradient-to-r from-black to-slate-500 rounded-full mb-6"
+                                aria-hidden="true"></div>
                         </>
                     )}
 
 
                     {heading && (
-                        <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-gray-900 mb-4 text-center">
+                        <h1 id="landing-heading" className="text-4xl md:text-5xl font-extrabold tracking-tight text-gray-900 mb-4 text-center">
                             {heading.text}
                         </h1>
                     )}
@@ -62,7 +64,7 @@ const LandingSection = (props: LandingSectionProps) => {
                         })
                     }
 
-                    <div className="flex flex-wrap gap-4 justify-center">
+                    <div className="flex flex-wrap gap-4 justify-center" role="group" aria-label="Action buttons">
                         {buttons && buttons
                             .sort((a, b) => a.order - b.order)
                             .map((button, index) => (
@@ -70,9 +72,10 @@ const LandingSection = (props: LandingSectionProps) => {
                                     key={index}
                                     variant={button.type === 'primary' ? 'default' : 'outline'}
                                     className={button.type === 'primary' ? "text-white bg-zinc-800 hover:bg-slate-800" : ""}
+                                    aria-label={button.text}
                                 >
                                     {button.type === 'secondary' && (
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-2">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-2" aria-hidden="true">
                                             <circle cx="11" cy="11" r="8"></circle>
                                             <path d="m21 21-4.3-4.3"></path>
                                         </svg>
