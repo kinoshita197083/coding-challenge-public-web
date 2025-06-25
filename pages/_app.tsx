@@ -1,6 +1,6 @@
 import type { AppProps } from 'next/app';
 import '../styles/globals.css';
-import Layout from '@/components/layout/layout';
+import Layout from '@/components/layout/Layout';
 
 function ZellerBusinessBlogApp({ Component, pageProps }: AppProps) {
     return (

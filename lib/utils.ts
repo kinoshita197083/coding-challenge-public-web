@@ -2,7 +2,8 @@ import { createClient } from "contentful";
 import { clsx, type ClassValue } from "clsx"
 import { twMerge } from "tailwind-merge"
 
-export const CONTENTFUL_CONTENT_TYPE = "blogPost";
+export const CONTENTFUL_BLOG_POSTS = "blogPost";
+export const CONTENTFUL_INDEX_PAGE = "blogsPage";
 
 export const getContentfulClient = () => {
     return createClient({
