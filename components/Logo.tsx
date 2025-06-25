@@ -1,8 +1,17 @@
-export const ZellerLogo = () => {
+type LogoSize = 'small' | 'default' | 'large';
+
+export const ZellerLogo = ({ size = 'default' }: { size?: LogoSize }) => {
+    // Apply different size classes based on the size prop
+    const sizeClasses = {
+        small: 'h-6 w-auto lg:h-7',
+        default: 'h-10 w-auto lg:h-[30px]',
+        large: 'h-12 w-auto lg:h-[36px]',
+    };
+
     return (
         <svg
             viewBox="0 0 89 32"
-            className={'h-10 w-auto text-black lg:h-[30px]'}
+            className={sizeClasses[size]}
             xmlns="http://www.w3.org/2000/svg"
             fill="currentColor"
         >
