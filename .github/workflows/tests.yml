@@ -16,14 +16,10 @@ jobs:
     - name: Setup Node.js
       uses: actions/setup-node@v3
       with:
-        node-version: '18'
-        cache: 'npm'
-        cache-dependency-path: coding-challenge-public-web/package-lock.json
+        node-version: '18.x'
 
     - name: Install dependencies
-      working-directory: ./coding-challenge-public-web
       run: npm ci
 
     - name: Run tests
-      working-directory: ./coding-challenge-public-web
       run: npm test 
