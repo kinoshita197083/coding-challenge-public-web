@@ -13,7 +13,7 @@ export const ZellerLogo = ({ size = 'default' }: { size?: LogoSize }) => {
             viewBox="0 0 89 32"
             className={sizeClasses[size]}
             xmlns="http://www.w3.org/2000/svg"
-            fill="currentColor"
+            // fill="currentColor"
             data-testid="logo"
         >
             <path d="M40.679.348h3.993v25.299H40.68V.347ZM0 13.492V9.498h16.06v2.91L5.966 24.388H16.06v3.994H0v-2.909l10.1-11.98H0Zm51.893-7.139H47.9v25.3h3.993v-25.3ZM81.81 11.67c1.68-1.772 3.802-2.6 6.491-2.53l.657.015v4.05l-.68-.01c-1.081.002-4.743.272-6.468 3.694v11.493h-3.993V9.498h3.994v2.173Z" />

@@ -10,6 +10,7 @@
     "test:watch": "jest --watch"
   },
   "dependencies": {
+    "@contentful/rich-text-react-renderer": "^16.0.2",
     "@contentful/rich-text-types": "^17.0.1",
     "@radix-ui/react-slot": "^1.2.3",
     "class-variance-authority": "^0.7.1",
