@@ -1,57 +1,126 @@
-# Zeller Web coding challenge
+# Zeller Blog Application
 
-This is a starter project for a Blog app. The app is built using:
+## Project Overview
 
-- [Next.js](https://nextjs.org)
-- [Tailwind CSS](https://tailwindcss.com)
-- [Contentful CMS](https://www.contentful.com)
+This is a blog application built for the Zeller Web coding challenge. It demonstrates a modern web application that fetches and displays blog content from Contentful CMS.
 
-## High Level Requirements
+### Technology Stack
 
-1. Create blog list page where the blog summaries are listed. Ex: Zeller blog page - https://www.myzeller.com/au/blog
-2. Once you click on a blog summary it should be navigated to a blog view page - Ex: https://www.myzeller.com/au/blog/awaken
+- **Next.js**: React framework for server-side rendering and static site generation
+- **Tailwind CSS**: Utility-first CSS framework for rapid UI development
+- **Contentful CMS**: Headless content management system
+- **TypeScript**: Static type checking
+- **Jest & React Testing Library**: Testing frameworks
 
-Styles do not need to match the examples above. Feel free to add styles as you see fit.
+## Project Structure
 
-## Zeller checklist
+```
+coding-challenge-public-web/
+├── __tests__/            # Test files
+├── components/
+│   ├── blogs/            # Blog-related components
+│   ├── callToAction/     # Call to action components
+│   ├── home/             # Landing page components
+│   ├── layout/           # Layout components
+│   ├── Navbar/           # Navigation components
+│   └── ui/               # Reusable UI components
+├── lib/                  # Utility functions
+├── pages/                # Next.js pages
+│   └── blog/             # Blog-specific pages
+├── public/               # Static assets
+├── styles/               # Global styles
+└── types/                # TypeScript type definitions
+```
 
-1. Proper test coverage
-2. Best practises for performance optimisation
-3. Code quality
-4. Quality and Responsive UI
-5. Documentation describing the approach and setup guidelines.
+## Implementation Approach
 
+### Blog List Page
+- Displays a list of blog summaries from Contentful
+- Features a prominent featured post section
+- Implements responsive grid layout for blog cards
+- Optimizes images with Next.js Image component
+
+### Blog Detail Page
+- Dynamic routing using Next.js `[slug].tsx` pattern
+- Rich text content rendering with the Contentful Rich Text renderer
+- Custom breadcrumb navigation for improved user experience
+- Responsive design for all device sizes
+
+### Performance Considerations
+- Server-side rendering for improved SEO and initial load time
+- Image optimization using Next.js Image component
+- Component-based architecture for code reusability
+- TypeScript for type safety and better developer experience
+
+### UI/UX Design
+- Clean, modern interface using Tailwind CSS
+- Responsive design that works on mobile, tablet, and desktop
+- Accessible navigation with semantic HTML
+- Consistent styling throughout the application
 
 ## Getting Started
 
-1. Install dependencies:
+### Prerequisites
+- Node.js 14.x or higher
+- npm or yarn
 
+### Installation
+
+1. Clone the repository:
+```bash
+git clone [repository-url]
+cd coding-challenge-public-web
+```
+
+2. Install dependencies:
 ```bash
 npm install
 ```
 
-2. Set up environment variables:
-
-Create a `.env.local` file in the root directory and add:
-
+3. Set up environment variables:
+Create a `.env.local` file in the root directory with:
 ```
 CONTENTFUL_SPACE_ID=your_space_id
 CONTENTFUL_ACCESS_TOKEN=your_access_token
 ```
 
-3. Run the development server:
-
+4. Run the development server:
 ```bash
 npm run dev
 ```
 
-4. Visit [http://localhost:3000](http://localhost:3000) to view the app.
+5. Visit [http://localhost:3000](http://localhost:3000) to view the application.
 
-## Notes
+## Testing
 
-- Replace `yourContentTypeId` in `pages/index.js` with your actual Contentful content type ID.
-- Make sure the content type has fields like `title` and `description` as used in the UI.
+Due to time constraint, the project includes partial test coverage using Jest and React Testing Library:
 
-Sample UI you should see by running the app
+```bash
+# Run all tests
+npm test
 
-![Screenshot 2025-05-20 at 10 20 29 am](https://github.com/user-attachments/assets/4487b877-870e-45f3-a0b1-4b5031f21295)
+# Run tests with coverage report
+npm test -- --coverage
+```
+
+## Build and Deployment
+
+```bash
+# Create a production build
+npm run build
+
+# Start the production server
+npm start
+```
+
+The application is configured for deployment on Vercel.
+
+## Screenshot
+
+![Blog Application Screenshot](https://i.postimg.cc/v8tFqP4z/Screenshot-2025-06-26-at-12-24-48-PM.png)
+
+## Potential Improvements
+
+- Implement pagination for the blog list
+- Add search functionality
+- Implement categories/tags filtering
